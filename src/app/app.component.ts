@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import countries from './files/couties-with-cities.json';
+
+
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,12 @@ import countries from './files/couties-with-cities.json';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   title = 'ClientManagementAngular';
+
+
+
+  constructor() { 
+    console.log('Reading local json files');
+  }
 }

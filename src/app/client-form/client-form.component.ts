@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Client } from '../interfaces/client';
 import { Contact } from '../interfaces/contact';
 
+
+
+
+
 @Component({
   selector: 'app-client-form',
   templateUrl: './client-form.component.html',
@@ -11,7 +15,7 @@ export class ClientFormComponent implements OnInit {
 
 
 
-  constructor() { }
+
 
   client = {} as Client;
   contact = {} as Contact;
