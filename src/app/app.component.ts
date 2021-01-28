@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import countries from './_files/countries.json';
+
 
 
 
@@ -13,7 +15,9 @@ export class AppComponent {
 
 
 
-  constructor() { 
-    console.log('Reading local json files');
-  }
+
+
+
+
+  
 }
