@@ -24,26 +24,26 @@ export class ClientFormComponent implements OnInit {
   selectedCountry = "";
   selectedCity = "";
 
-  countriesList = []; 
-  citiesList = []; 
+  countriesList = [];
+  citiesList = [];
 
   constructor(){}
-  
+
 
   ngOnInit(): void {
-    
+
     //fetch coutries
-    let cr = []; 
-    let cr2 = [];  
-    Object.keys(countries).map(function(key){  
-      cr.push({[key]:countries[key]})  
-    }); 
-    cr.forEach(element => {
-      Object.keys(element).map(function(key){  
-        cr2.push({'name' : key})  
-      });  
+    let cr = [];
+    let cr2 = [];
+    Object.keys(countries).map(function(key){
+      cr.push({[key]:countries[key]})
     });
-    this.countriesList = cr2; 
+    cr.forEach(element => {
+      Object.keys(element).map(function(key){
+        cr2.push({'name' : key})
+      });
+    });
+    this.countriesList = cr2;
 
 
     this.selectedCountry = this.countriesList[0].name;
@@ -53,9 +53,9 @@ export class ClientFormComponent implements OnInit {
     // console.log(this.selectedCity);
 
     this.onChangeCountry(this.selectedCountry );
-    
-    
-    
+
+
+
   }
 
 
@@ -66,6 +66,7 @@ export class ClientFormComponent implements OnInit {
   }
 
   onChangeCountry(newValue) {
+    this.citiesList = [];
     this.citiesList = countries[newValue];
     this.selectedCity = this.citiesList[0];
   }

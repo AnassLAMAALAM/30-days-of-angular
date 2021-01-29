@@ -1,0 +1,13 @@
+button {
+    margin-top:1px;
+}
+#cssTable th{   
+    font-weight: bold;
+}
+ #cssTable td,#cssTable th{ 
+    vertical-align: middle;
+}
+
+.card{
+    margin-top: 20px;
+}

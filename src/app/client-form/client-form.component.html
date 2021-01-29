@@ -118,30 +118,11 @@
                       </div>
 
                       <div class="form-group">
-                        <label>Country</label>
+                        <label>City</label>
                         <select class="form-select" [ngModel]="selectedCity" (ngModelChange)="onChangeCity($event)" name="selectedCity">
                           <option  *ngFor="let city of citiesList"[value]="city" > {{city}} </option>
                         </select>
                       </div>
-
-                      <div class="form-group" [ngClass]="{'has-danger': city.invalid && ((clientForm.submitted) || (city.dirty || city.touched)) }">
-                        <label>City </label>
-                        <input
-                            type="text"
-                            class="form-select"
-                            [ngClass]="{'is-invalid': city.invalid && ((clientForm.submitted) || (city.dirty || city.touched)) }"
-                            name="city"
-                            [(ngModel)]="contact.city"
-                            #city="ngModel"
-                            required
-
-                            placeholder="Enter city"
-                        />
-                        <div class="form-control-feedback" *ngIf="city.errors && ((clientForm.submitted) || (city.dirty || city.touched))">
-                            <small *ngIf="city.errors && ((clientForm.submitted) || (city.dirty || city.touched))"> City is required </small>
-                        </div>
-                    </div>
-
 
                        <div class="form-group" [ngClass]="{'has-danger': adress.invalid && ((clientForm.submitted) || (adress.dirty || adress.touched)) }">
                            <label>Adress </label>

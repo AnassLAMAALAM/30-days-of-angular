@@ -8,18 +8,22 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ClientFormComponent } from './client-form/client-form.component';
 import { FooterComponent } from './footer/footer.component';
+import { ClientListComponent } from './client-list/client-list.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     ClientFormComponent,
-    FooterComponent
+    FooterComponent,
+    ClientListComponent,
   ],
   imports: [
     BrowserModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
