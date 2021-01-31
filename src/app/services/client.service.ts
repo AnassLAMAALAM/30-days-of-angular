@@ -21,6 +21,8 @@ export class ClientService {
   }
 
   create(data): Observable<any> {
+    console.log("hello");
+    
     return this.http.post(baseUrl, data);
   }
 

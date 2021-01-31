@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Client } from '../interfaces/client';
 import { Contact } from '../interfaces/contact';
 import countries from '../_files/countries.json';
-
-
-
+import { ClientService } from '../services/client.service';
 
 
 @Component({
@@ -27,7 +25,8 @@ export class ClientFormComponent implements OnInit {
   countriesList = [];
   citiesList = [];
 
-  constructor(){}
+
+  constructor(private clientService: ClientService) {}
 
 
   ngOnInit(): void {
@@ -58,11 +57,37 @@ export class ClientFormComponent implements OnInit {
 
   }
 
+  saveClient() {
+
+
+    const data = this.client;
+
+    this.clientService.create(data)
+      .subscribe(
+        response => {
+          console.log(response);
+        },
+        error => {
+          console.log(error);
+        });
+  }
+
+
+
 
   onSubmit(cF){
     console.log(cF.value);
+
+    this.client.contact = this.contact;
+    this.client.contact.city = this.selectedCity;
+    this.client.contact.country = this.selectedCountry;
+    
     console.log(JSON.stringify(this.client));
     console.log(JSON.stringify(this.contact));
+
+    this.saveClient();
+
+
   }
 
   onChangeCountry(newValue) {

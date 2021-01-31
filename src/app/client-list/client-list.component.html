@@ -18,16 +18,16 @@
                         <th class="text-center" style="width: 14%;">Action</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody>    
                     <tr *ngFor="let client of clients">
-                        <td scope="row" class="text-center"> {{ client.firstName }}</td>
-
-                        <td class="text-center"> {{ client.lastName }}</td>
-                        <td class="text-center">{{ client.firstName }}</td>
-                        <td class="text-center">{{ client.firstName }}</td>
-                        <td class="text-center">{{ client.firstName }}</td>
-                        <td class="text-center">{{ client.firstName }}</td>
-                        <td class="text-center">{{ client.firstName }}</td>
+                        <td class="text-center"> {{ client.firstName }}</td>
+                        <td class="text-center">{{ client.lastName }}</td>
+                        <td class="text-center">{{ client.contact.phoneNumber }}</td>
+                        <td class="text-center">{{ client.contact.email }}</td>
+                        <td class="text-center">{{ client.contact.country }}</td>
+                        <td class="text-center">{{ client.contact.city }}</td>
+                        <td class="text-center">{{ client.contact.zip }}</td>
+                        
                         <td class="text-center">
                             <button type="button" class="btn btn-outline-danger btn-sm"><fa-icon [icon]="faTrash"></fa-icon></button>
                             <button type="button" class="btn btn-outline-primary btn-sm"><fa-icon [icon]="faEye"></fa-icon></button>

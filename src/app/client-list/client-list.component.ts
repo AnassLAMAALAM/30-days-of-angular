@@ -18,14 +18,12 @@ export class ClientListComponent implements OnInit {
   faCopy=faCopy;
   faTrash=faTrash;
 
-  clients : any;
-  constructor(private tutorialService: ClientService) {
-
-  }
+  clients : Client[];
+  constructor(private clientService: ClientService) {}
 
   ngOnInit(): void {
 
-    this.tutorialService.getAll()
+    this.clientService.getAll()
     .subscribe(
       data => {
         this.clients = data;
