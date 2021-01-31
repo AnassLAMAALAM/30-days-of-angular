@@ -11,6 +11,8 @@ import { FooterComponent } from './footer/footer.component';
 import { ClientListComponent } from './client-list/client-list.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
+import { SimpleNotificationsModule } from 'angular2-notifications';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { HttpClientModule } from '@angular/common/http';
     NgbModule,
     FormsModule,
     FontAwesomeModule,
-    HttpClientModule
+    HttpClientModule,
+    SimpleNotificationsModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

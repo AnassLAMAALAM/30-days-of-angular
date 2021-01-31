@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import countries from './_files/countries.json';
-
+import { Component, OnInit } from '@angular/core';
+import { NotificationsService } from "angular2-notifications";
 
 
 
@@ -15,7 +14,9 @@ export class AppComponent {
 
   title = 'ClientManagementAngular';
 
+  constructor(){  }
 
+  
 
 
 

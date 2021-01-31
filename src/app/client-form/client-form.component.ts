@@ -81,7 +81,7 @@ export class ClientFormComponent implements OnInit {
     this.client.contact = this.contact;
     this.client.contact.city = this.selectedCity;
     this.client.contact.country = this.selectedCountry;
-    
+
     console.log(JSON.stringify(this.client));
     console.log(JSON.stringify(this.contact));
 
@@ -93,6 +93,7 @@ export class ClientFormComponent implements OnInit {
   onChangeCountry(newValue) {
     this.citiesList = [];
     this.citiesList = countries[newValue];
+    this.selectedCountry = newValue;
     this.selectedCity = this.citiesList[0];
   }
 
