@@ -12,26 +12,20 @@ import { ClientService } from '../services/client.service';
 })
 export class ClientFormComponent implements OnInit {
 
-
-
-
-
   client = {} as Client;
   contact = {} as Contact;
-
   selectedCountry = "";
   selectedCity = "";
-
   countriesList = [];
   citiesList = [];
 
-
   constructor(private clientService: ClientService) {}
 
-
   ngOnInit(): void {
+    this.fetchCoutriesCities();
+  }
 
-    //fetch coutries
+  fetchCoutriesCities(){
     let cr = [];
     let cr2 = [];
     Object.keys(countries).map(function(key){
@@ -43,25 +37,12 @@ export class ClientFormComponent implements OnInit {
       });
     });
     this.countriesList = cr2;
-
-
     this.selectedCountry = this.countriesList[0].name;
-    // this.selectedCity = countries[this.selectedCountry][0];
-
-
-    // console.log(this.selectedCity);
-
     this.onChangeCountry(this.selectedCountry );
-
-
-
   }
-
   saveClient() {
 
-
     const data = this.client;
-
     this.clientService.create(data)
       .subscribe(
         response => {
@@ -72,33 +53,26 @@ export class ClientFormComponent implements OnInit {
         });
   }
 
-
-
-
   onSubmit(cF){
-    console.log(cF.value);
 
     this.client.contact = this.contact;
     this.client.contact.city = this.selectedCity;
     this.client.contact.country = this.selectedCountry;
 
-    console.log(JSON.stringify(this.client));
-    console.log(JSON.stringify(this.contact));
-
-    this.saveClient();
-
-
+    if(cF.valid){
+      this.saveClient()
+    }
   }
 
-  onChangeCountry(newValue) {
+  onChangeCountry(selectedCountry) {
     this.citiesList = [];
-    this.citiesList = countries[newValue];
-    this.selectedCountry = newValue;
+    this.citiesList = countries[selectedCountry];
+    this.selectedCountry = selectedCountry;
     this.selectedCity = this.citiesList[0];
   }
 
-  onChangeCity(newValue) {
-    console.log(newValue);
+  onChangeCity(selectedCity) {
+    console.log(selectedCity);
   }
 
 }

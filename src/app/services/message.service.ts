@@ -14,25 +14,25 @@ export class MessageService {
   
   onSuccess(message){
     this.service.success('success',message,{
-      position : ['top','right'],
+      position : ['top'],
       animate:'fromRight',
       showProgressBar:true,
-      timeOut: 5000,
+      timeOut: 3000,
       pauseOnHover: true,
       clickToClose: true,
-      maxLength: 10,
+      maxLength: 20,
     });
   }
 
   onError(message){
     this.service.error('error',message,{
-      position : ['top','right'],
+      position : ['top'],
       animate:'fromRight',
       showProgressBar:true,
-      timeOut: 5000,
+      timeOut: 3000,
       pauseOnHover: true,
       clickToClose: true,
-      maxLength: 10,
+      maxLength: 20,
 
     });
   }

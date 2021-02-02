@@ -42,20 +42,19 @@ export class ClientListComponent implements OnInit {
   }
 
   deleteClient(clientId) {
-    this.messageService.onError("The record has been deleted !");
-    // this.clientService.delete(clientId)
-    //   .subscribe(
-    //     response => {
-    //       console.log(response);
-    //       this.clients.forEach((client,index)=>{
-    //         if(client.clientId==clientId) this.clients.splice(index,1);
-    //         this.messageService.onSuccess("The record has been deleted !");
-    //      });
-    //     },
-    //     error => {
-    //       console.log(error);
-    //     });
+
+    if (confirm('Are you sure you want to delete this thing into the database?')) {
+    this.clientService.delete(clientId)
+      .subscribe(
+        response => {
+          this.messageService.onSuccess("The record has been deleted !");
+          this.clients.forEach((client,index)=>{
+            if(client.clientId==clientId) this.clients.splice(index,1);
+         });
+        },
+        error => {
+         this.messageService.onError("Erreur !!");
+        });
+    } 
   }
-
-
 }
