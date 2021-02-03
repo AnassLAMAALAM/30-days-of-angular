@@ -3,6 +3,7 @@ import { Client } from '../interfaces/client';
 import { Contact } from '../interfaces/contact';
 import countries from '../_files/countries.json';
 import { ClientService } from '../services/client.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -19,10 +20,32 @@ export class ClientFormComponent implements OnInit {
   countriesList = [];
   citiesList = [];
 
-  constructor(private clientService: ClientService) {}
+  constructor(private clientService: ClientService,private route : ActivatedRoute) {}
 
   ngOnInit(): void {
     this.fetchCoutriesCities();
+
+
+
+    this.route.paramMap.subscribe(params => {
+      console.log(params.get('id'));
+       this.clientService.get(params.get('id')).subscribe(c =>{
+          console.log(c);
+          this.client = c;
+          this.contact = this.client.contact;
+
+          this.selectedCountry = this.client.contact.country;
+          this.citiesList = [];
+          this.citiesList = countries[this.selectedCountry];
+          this.selectedCity = this.client.contact.city;
+
+
+
+      })   
+      });
+
+
+
   }
 
   fetchCoutriesCities(){

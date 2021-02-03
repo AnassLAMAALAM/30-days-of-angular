@@ -5,7 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: '', component: ClientListComponent },
-  { path: 'newClient', component: ClientFormComponent }
+  { path: 'new-client', component: ClientFormComponent },
+  {path: 'edit-client/:id' , component: ClientFormComponent}
 ];
 
 @NgModule({

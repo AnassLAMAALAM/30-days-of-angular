@@ -1,9 +1,16 @@
 <div class="bs-docs-section">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title m-b-0">Client List</h4>
-
+           
        
+        <div class="d-flex flex-row"> 
+            <h4 class="card-title m-b-0">Client List</h4> 
+            <button type="button" class="btn btn-outline-primary pull-right" 
+            routerLink="/new-client">Primary</button>
+        </div>
+
+           
+
 
             <table id="cssTable" class="table table-bordered table-sm">
                 <thead>
@@ -32,7 +39,9 @@
                             <button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteClient(client.clientId)"><fa-icon [icon]="faTrash"></fa-icon></button>
                             <button type="button" class="btn btn-outline-primary btn-sm"><fa-icon [icon]="faEye"></fa-icon></button>
                             <button type="button" class="btn btn-outline-warning btn-sm"><fa-icon [icon]="faCopy"></fa-icon></button>
-                            <button type="button" class="btn btn-outline-success btn-sm" routerLink="/newClient"><fa-icon [icon]="faEdit"></fa-icon></button>
+                            
+                            <button type="button" class="btn btn-outline-success btn-sm" 
+                            [routerLink]="['/edit-client', client.clientId ]"><fa-icon [icon]="faEdit"></fa-icon></button>
                             
 
                         </td>
