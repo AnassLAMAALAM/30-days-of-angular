@@ -7,8 +7,6 @@ import { faCopy } from '@fortawesome/free-solid-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { ClientService } from '../services/client.service';
 
-
-
 @Component({
   selector: 'app-client-list',
   templateUrl: './client-list.component.html',
