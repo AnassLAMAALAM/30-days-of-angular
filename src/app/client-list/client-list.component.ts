@@ -1,7 +1,7 @@
 import { MessageService } from './../services/message.service';
 import { Client } from './../interfaces/client';
 import { Component, OnInit } from '@angular/core';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { faCopy } from '@fortawesome/free-solid-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -18,6 +18,7 @@ export class ClientListComponent implements OnInit {
   faEye=faEye;
   faCopy=faCopy;
   faTrash=faTrash;
+  faPlusCircle=faPlusCircle;
 
   clients : Client[];
   constructor(private clientService: ClientService,private messageService:MessageService){  }
