@@ -1,3 +1,4 @@
+import { MessageService } from './../services/message.service';
 import { Component, OnInit } from '@angular/core';
 import { Client } from '../interfaces/client';
 import { Contact } from '../interfaces/contact';
@@ -19,16 +20,19 @@ export class ClientFormComponent implements OnInit {
   selectedCity = "";
   countriesList = [];
   citiesList = [];
+  editClient : boolean = false;
 
-  constructor(private clientService: ClientService,private route : ActivatedRoute) {}
+  constructor(private clientService: ClientService,private messageService:MessageService,private route : ActivatedRoute) {}
 
   ngOnInit(): void {
     this.fetchCoutriesCities();
+    this.retrieveClient();
+  }
 
-
-
+  retrieveClient(){
     this.route.paramMap.subscribe(params => {
-      console.log(params.get('id'));
+      if(params.get('id') != null){
+       this.editClient = true;
        this.clientService.get(params.get('id')).subscribe(c =>{
           console.log(c);
           this.client = c;
@@ -38,14 +42,9 @@ export class ClientFormComponent implements OnInit {
           this.citiesList = [];
           this.citiesList = countries[this.selectedCountry];
           this.selectedCity = this.client.contact.city;
-
-
-
-      })   
+        })   
+      }
       });
-
-
-
   }
 
   fetchCoutriesCities(){
@@ -70,11 +69,26 @@ export class ClientFormComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
+          this.messageService.onSuccess('The client has been created with success !');
         },
         error => {
           console.log(error);
         });
   }
+  updateClient() {
+
+    const data = this.client;
+    this.clientService.update(this.client.clientId,data)
+      .subscribe(
+        response => {
+          this.messageService.onSuccess('The client has been updated with success !');
+          
+        },
+        error => {
+          console.log(error);
+        });
+  }
+  
 
   onSubmit(cF){
 
@@ -83,7 +97,8 @@ export class ClientFormComponent implements OnInit {
     this.client.contact.country = this.selectedCountry;
 
     if(cF.valid){
-      this.saveClient()
+      if (this.editClient) this.updateClient(); 
+      else this.saveClient();
     }
   }
 

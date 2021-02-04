@@ -155,7 +155,25 @@
                                         <small *ngIf="zip.errors?.pattern && ((clientForm.submitted) || (zip.dirty || zip.touched))"> This is not a valid Zip  </small>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                                
+
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <button type="submit" class="btn btn-primary btn-block">Save</button>
+                                    
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button type="submit" class="btn btn-primary btn-block">Delete</button>
+                                    
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <button type="submit"  class="btn btn-primary btn-block">Cancel</button>
+                                    
+                                    </div>
+                                  </div>
+
                             </fieldset>
                         </div>
                     </div>

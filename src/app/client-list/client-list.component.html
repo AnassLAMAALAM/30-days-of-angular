@@ -5,23 +5,19 @@
        
         <div class="d-flex flex-row"> 
             <h4 class="card-title m-b-0">Client List</h4> 
-            <button type="button" class="btn btn-outline-primary pull-right" 
-            routerLink="/new-client">Primary</button>
+            <button type="button" class="btn btn-outline-primary pull-right btn-sm" 
+            routerLink="/new-client">New client</button>
         </div>
-
-           
-
-
-            <table id="cssTable" class="table table-bordered table-sm">
+        
+        <table id="cssTable" class="table table-bordered table-sm">
                 <thead>
                     <tr>
                         <th class="text-center" style="width: 15%;">First name</th>
                         <th class="text-center" style="width: 15%;">Last name</th>
-                        <th class="text-center" style="width: 10%;">Phone number</th>
-                        <th class="text-center" style="width: 15%;">Email</th>
-                        <th class="text-center" style="width: 5%;">Country</th>
-                        <th class="text-center" style="width: 15%;">City</th>
-                        <th class="text-center" style="width: 10%;">Zip</th>
+                        <th class="text-center" style="width: 15%;">Phone number</th>
+                        <th class="text-center" style="width: 20%;">Email</th>
+                        <th class="text-center" style="width: 10%;">Country</th>
+                        <th class="text-center" style="width: 10%;">City</th>
                         <th class="text-center" style="width: 15%;">Action</th>
                     </tr>
                 </thead>
@@ -33,7 +29,6 @@
                         <td class="text-center">{{ client.contact.email }}</td>
                         <td class="text-center">{{ client.contact.country }}</td>
                         <td class="text-center">{{ client.contact.city }}</td>
-                        <td class="text-center">{{ client.contact.zip }}</td>
                         
                         <td class="text-center">
                             <button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteClient(client.clientId)"><fa-icon [icon]="faTrash"></fa-icon></button>

@@ -25,23 +25,25 @@ export class ClientListComponent implements OnInit {
   OnInit(){ }
 
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.retrieveClients();
+  }
 
-    this.clientService.getAll()
-    .subscribe(
-      data => {
-        this.clients = data;
-        console.log(data);
-      },
-      error => {
-        console.log(error);
-      });
-
+  retrieveClients() {
+  this.clientService.getAll()
+  .subscribe(
+    data => {
+      this.clients = data;
+      console.log(data);
+    },
+    error => {
+      console.log(error);
+    });
   }
 
   deleteClient(clientId) {
 
-    if (confirm('Are you sure you want to delete this thing into the database?')) {
+    if (confirm('Are you sure you want to delete this thing from the database?')) {
     this.clientService.delete(clientId)
       .subscribe(
         response => {
@@ -51,7 +53,7 @@ export class ClientListComponent implements OnInit {
          });
         },
         error => {
-         this.messageService.onError("Erreur !!");
+         this.messageService.onError("Error !!");
         });
     } 
   }
