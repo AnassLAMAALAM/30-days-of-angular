@@ -14,6 +14,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ClientFormComponent implements OnInit {
 
+
   client = {} as Client;
   contact = {} as Contact;
   selectedCountry = "";
@@ -29,13 +30,22 @@ export class ClientFormComponent implements OnInit {
     this.retrieveClient();
   }
 
+  cancel(e){
+    e.preventDefault();
+    if(this.editClient) this.retrieveClient();
+
+
+    
+  }
+
   retrieveClient(){
+    
     this.route.paramMap.subscribe(params => {
       if(params.get('id') != null){
        this.editClient = true;
-       this.clientService.get(params.get('id')).subscribe(c =>{
-          console.log(c);
-          this.client = c;
+       this.clientService.get(params.get('id')).subscribe(client =>{
+          
+          this.client = client;
           this.contact = this.client.contact;
 
           this.selectedCountry = this.client.contact.country;

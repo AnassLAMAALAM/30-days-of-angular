@@ -159,17 +159,21 @@
 
 
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <button type="submit" class="btn btn-primary btn-block">Save</button>
+                                    <div class="col-md-3">
+                                        <button type="submit" class="btn btn-outline-primary btn-block">Save</button>
                                     
                                     </div>
-                                    <div class="col-md-4">
-                                        <button type="submit" class="btn btn-primary btn-block">Delete</button>
+                                    <div class="col-md-3">
+                                        <button class="btn btn-outline-danger btn-block">Delete</button>
+                                    
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button class="btn btn-outline-warning btn-block">Close</button>
                                     
                                     </div>
 
-                                    <div class="col-md-4">
-                                        <button type="submit"  class="btn btn-primary btn-block">Cancel</button>
+                                    <div class="col-md-3">
+                                        <button (click)=cancel($event) class="btn btn-outline-secondary btn-block">Cancel</button>
                                     
                                     </div>
                                   </div>
@@ -184,6 +188,3 @@
     </div>
 </div>
 <simple-notifications ></simple-notifications>
-
-
-
