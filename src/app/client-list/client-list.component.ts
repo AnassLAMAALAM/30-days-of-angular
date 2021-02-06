@@ -1,4 +1,4 @@
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { MessageService } from './../services/message.service';
 import { Client } from './../interfaces/client';
 import { Component, OnInit } from '@angular/core';
@@ -23,7 +23,10 @@ export class ClientListComponent implements OnInit {
 
   clients : Client[];
   myParam : String;
-  constructor(private clientService: ClientService,private messageService:MessageService,private route: ActivatedRoute ){  }
+  constructor(private clientService: ClientService,
+    private messageService:MessageService,
+    private route: ActivatedRoute,
+    private router: Router ){  }
 
 
 
@@ -31,12 +34,13 @@ export class ClientListComponent implements OnInit {
   ngOnInit() {
     this.retrieveClients();
 
-   this.route.params.subscribe((params: Params) => this.myParam = params['id']);
+    this.route.params.subscribe((params: Params) => this.myParam = params['id']);
 
-   console.log(this.myParam);
-   
-
-
+    if (this.myParam != null) {
+      this.router.navigate(['/']);
+      this.deleteClient(this.myParam);
+      this.myParam = null;
+    }
   }
 
   retrieveClients() {

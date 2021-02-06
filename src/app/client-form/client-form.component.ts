@@ -35,9 +35,7 @@ export class ClientFormComponent implements OnInit {
 
   delete(e){
     e.preventDefault();
-    this.router.navigate(['delete-client'], { queryParams: { id : this.client.clientId } });
-
-
+    this.router.navigate(['/delete-client', this.client.clientId]);
 
   }
 
