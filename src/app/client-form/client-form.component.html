@@ -90,22 +90,6 @@
                                         <small *ngIf="email.errors?.pattern && ((clientForm.submitted) || (email.dirty || email.touched))"> This is not a valid Email </small>
                                     </div>
                                 </div>
-                                                       <!-- <div class="form-group" [ngClass]="{'has-danger': country.invalid && ((clientForm.submitted) || (country.dirty || country.touched)) }">
-                                    <label>Country </label>
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        [ngClass]="{'is-invalid': country.invalid && ((clientForm.submitted) || (country.dirty || country.touched)) }"
-                                        name="country"
-                                        [(ngModel)]="contact.country"
-                                        #country="ngModel"
-                                        required
-                                        placeholder="Enter country"
-                                    />
-                                    <div class="form-control-feedback" *ngIf="country.errors && ((clientForm.submitted) || (country.dirty || country.touched))">
-                                        <small *ngIf="country.errors && ((clientForm.submitted) || (country.dirty || country.touched))"> Country is required </small>
-                                    </div>
-                                </div> -->
          
                                 <div class="form-group">
                                  <label>Country</label>
@@ -164,7 +148,7 @@
                                     
                                     </div>
                                     <div class="col-md-3">
-                                        <button class="btn btn-outline-danger btn-block">Delete</button>
+                                        <button (click)=delete($event) class="btn btn-outline-danger btn-block">Delete</button>
                                     
                                     </div>
                                     <div class="col-md-3">

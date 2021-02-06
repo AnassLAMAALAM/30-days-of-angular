@@ -1,11 +1,10 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from './../services/message.service';
 import { Component, OnInit } from '@angular/core';
 import { Client } from '../interfaces/client';
 import { Contact } from '../interfaces/contact';
 import countries from '../_files/countries.json';
 import { ClientService } from '../services/client.service';
-import { ActivatedRoute } from '@angular/router';
-
 
 @Component({
   selector: 'app-client-form',
@@ -23,11 +22,23 @@ export class ClientFormComponent implements OnInit {
   citiesList = [];
   editClient : boolean = false;
 
-  constructor(private clientService: ClientService,private messageService:MessageService,private route : ActivatedRoute) {}
+  constructor(private clientService: ClientService,
+    private messageService:MessageService,
+    private route: ActivatedRoute,
+    private router: Router) {}
 
   ngOnInit(): void {
     this.fetchCoutriesCities();
     this.retrieveClient();
+  }
+
+
+  delete(e){
+    e.preventDefault();
+    this.router.navigate(['delete-client'], { queryParams: { id : this.client.clientId } });
+
+
+
   }
 
   cancel(e){
@@ -52,6 +63,7 @@ export class ClientFormComponent implements OnInit {
           this.citiesList = [];
           this.citiesList = countries[this.selectedCountry];
           this.selectedCity = this.client.contact.city;
+          
         })   
       }
       });
@@ -115,12 +127,15 @@ export class ClientFormComponent implements OnInit {
   onChangeCountry(selectedCountry) {
     this.citiesList = [];
     this.citiesList = countries[selectedCountry];
-    this.selectedCountry = selectedCountry;
-    this.selectedCity = this.citiesList[0];
+     this.selectedCountry = selectedCountry;
+    if (this.editClient) {
+        this.selectedCity = this.client.contact.city;
+    }
+   else this.selectedCity = this.citiesList[0];
   }
 
   onChangeCity(selectedCity) {
-    console.log(selectedCity);
+    this.selectedCity = selectedCity;
   }
 
 }

@@ -1,3 +1,4 @@
+import { ActivatedRoute, Params } from '@angular/router';
 import { MessageService } from './../services/message.service';
 import { Client } from './../interfaces/client';
 import { Component, OnInit } from '@angular/core';
@@ -21,13 +22,21 @@ export class ClientListComponent implements OnInit {
   faPlusCircle=faPlusCircle;
 
   clients : Client[];
-  constructor(private clientService: ClientService,private messageService:MessageService){  }
+  myParam : String;
+  constructor(private clientService: ClientService,private messageService:MessageService,private route: ActivatedRoute ){  }
 
-  OnInit(){ }
+
 
 
   ngOnInit() {
     this.retrieveClients();
+
+   this.route.params.subscribe((params: Params) => this.myParam = params['id']);
+
+   console.log(this.myParam);
+   
+
+
   }
 
   retrieveClients() {
